@@ -1,0 +1,14 @@
+<h1>Hola este es mi primer proyecto</h1>
+<h2>{{bienvenida}}</h2>
+
+<ul>
+  @for (tarea of tareas; track tarea) {
+    <li>{{ tarea }}</li>
+    } @empty {
+    <li>There are no items.</li>
+    }
+</ul>
+<hr/>
+<h2>{{'HOLA'.repeat(4)}}</h2>
+<p>La suma de 3+3 es {{3+3}}</p>
+<p>Hola soy {{name}} y mi edad es {{age}}</p>
