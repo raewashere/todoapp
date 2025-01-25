@@ -35,5 +35,7 @@
     <!--Event binding: Deteccion de entrada de teclado -->
     <p>(keydown)</p>
     <input type="text"   [value]="person.name" (keydown)="keydownHandler($event)" />
-
+    <!--Event binding: Deteccion de entrada de teclado especifica, tecla o comando-->
+    <p>(keydown + shift + t)</p>
+    <input type="text"   [value]="person.name" (keydown.shift.t)="changeHandler($event)" />
 </div>
