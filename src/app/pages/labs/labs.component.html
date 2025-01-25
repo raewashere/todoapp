@@ -1,14 +1,39 @@
-<h1>Hola este es mi primer proyecto</h1>
-<h2>{{bienvenida}}</h2>
+<div class="container">
+    <h1>Hola este es mi primer proyecto</h1>
+    <h2>{{bienvenida}}</h2>
+    
+    <ul>
+      @for (tarea of tareas; track tarea) {
+        <li>{{ tarea }}</li>
+        } @empty {
+        <li>There are no items.</li>
+        }
+    </ul>
+    <hr/>
+    <h2>{{'HOLA'.repeat(4)}}</h2>
+    <p>La suma de 3+3 es {{3+3}}</p>
+    <p>Hola soy {{name}} y mi edad es {{age}}</p>
+    <hr/>
+    <!-- Se pueden modificar sus propiedades de una etiqueta con Property Binding -->
+    <img [src]="img" alt="imagen" />
+    <input type="text" [value]="name" />
+    <button [disabled]="disabled">Saludar</button>
+    <hr/>
+    <!-- Ejemplo Property Binding con objeto -->
+    <img [src]="person.img" alt="imagen" />
+    <input type="text" [value]="person.age" />
+    <input type="text" [value]="person.name" />
+    <button [disabled]="disabled">Saludar</button>
+    <hr/>
+    <!--Event binding: Llamado de funciones de acuerdo a eventos como click de boton-->
+    <button (click)="clickHandler()">click me</button>
+    <!--Event binding: Llamado de funciones de acuerdo a eventos como doble click de boton-->
+    <button (dblclick)="clickHandler()">double me</button>
+     <!--Event binding: Detectar cambios dentro de un input -->
+    <p>(change)</p>    
+    <input type="number"   [value]="person.age" (change)="changeHandler($event)" />
+    <!--Event binding: Deteccion de entrada de teclado -->
+    <p>(keydown)</p>
+    <input type="text"   [value]="person.name" (keydown)="keydownHandler($event)" />
 
-<ul>
-  @for (tarea of tareas; track tarea) {
-    <li>{{ tarea }}</li>
-    } @empty {
-    <li>There are no items.</li>
-    }
-</ul>
-<hr/>
-<h2>{{'HOLA'.repeat(4)}}</h2>
-<p>La suma de 3+3 es {{3+3}}</p>
-<p>Hola soy {{name}} y mi edad es {{age}}</p>
+</div>
