@@ -38,4 +38,9 @@
     <!--Event binding: Deteccion de entrada de teclado especifica, tecla o comando-->
     <p>(keydown + shift + t)</p>
     <input type="text"   [value]="person.name" (keydown.shift.t)="changeHandler($event)" />
+    <hr/>
+    <!--Modificacion dinamica de una variable-->
+    <h1>Signals</h1>
+    <input type="text"   [value]="nameSignal()" (change)="changeHandlerSignal($event)" />
+    <p>nombre signal {{nameSignal()}}</p>
 </div>

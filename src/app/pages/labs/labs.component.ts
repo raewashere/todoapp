@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -43,6 +43,18 @@ export class LabsComponent {
   keydownHandler(event: KeyboardEvent) {
     const input = event.target as HTMLInputElement;
     console.log(input.value);
+  }
+
+  //Ejemplo de funcion con signal, permite hacer cambios de forma dinamica
+  nameSignal = signal('Raymundo');
+
+  changeHandlerSignal(event: Event) {
+    //Obtener valor de input
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    console.log(newValue);
+    //Modifica valor de variable signal, render de acuerdo a forma dinamica de manera reactiva
+    this.nameSignal.set(newValue);
   }
 
 }
