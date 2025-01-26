@@ -43,4 +43,13 @@
     <h1>Signals</h1>
     <input type="text"   [value]="nameSignal()" (change)="changeHandlerSignal($event)" />
     <p>nombre signal {{nameSignal()}}</p>
+
+    <!--Obtencion longitud de signal arrelgo -->
+    <p>total : {{tareasSignal().length}}</p>
+    <!--Recorrido  de signal en un arreglo-->
+    <ul>
+      <li *ngFor="let tarea of tareasSignal(); let i = index">
+        {{i}} {{tarea}}
+      </li>
+    </ul>
 </div>

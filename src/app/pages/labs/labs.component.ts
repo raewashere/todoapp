@@ -57,4 +57,10 @@ export class LabsComponent {
     this.nameSignal.set(newValue);
   }
 
+  //Signal hecha con arreglos de strings
+  tareasSignal = signal([
+    'Instalar en angular en CLI',
+    'Crear proyecto',
+    'Crear componentes',
+  ]);
 }
