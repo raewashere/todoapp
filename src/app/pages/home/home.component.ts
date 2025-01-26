@@ -1,6 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+//Importar el modelo de tarea
+import { Task } from '../../models/task.model';  
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -9,23 +12,39 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  tasks = signal([
-    'Instalar Angular CLI',
-    'Crear proyecto',
-    'Crear componente',
-    'Crear  servicio',
+  tasks = signal<Task[]>([
+    {
+      id: Date.now(),
+      title: 'Instalar Angular CLI',
+      completed: false
+    }, 
+    {
+      id: Date.now(),
+      title: 'Crear componentes',
+      completed: false
+    }
   ]);
 
   //Agregar una nueva tarea
   changeHandler(event: Event){
     const input = event.target as HTMLInputElement;
     const newTask = input.value;
-    if(newTask){
-      //Agregar nuevo elemento al arreglo sin mutar el arreglo original
-      this.tasks.update((tasks) => [ ...tasks, newTask]);
-      input.value = '';
-    }
+    //Agregar nuevo elemento al arreglo sin mutar el arreglo original
+    this.addTask(newTask);
+    //Limpiar el input
+    input.value = '';
   }
+
+  //Agregar tarea a un arreglo de objetos con interfaces
+  addTask(title: string){
+    const newTask: Task = {
+      id: Date.now(),
+      title: title,
+      completed: false
+    };
+    this.tasks.update((tasks) => [...tasks, newTask]);
+  }
+
 
   //Eliminar una tarea de acuerdo a su indice
   deleteTask(index: number){
