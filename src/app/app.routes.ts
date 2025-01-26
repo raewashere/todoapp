@@ -1,5 +1,5 @@
 //Importar el modulo de rutas de Angular
-import { RouterModule, Routes, RouterOutlet } from '@angular/router';
+import { Routes } from '@angular/router';
 //Importar el componente Labs
 import { LabsComponent } from './pages/labs/labs.component';
 //Importar el componente Home	
