@@ -14,6 +14,12 @@
     </header>
     <div class="container todoapp-wrapper">
       <!-- Renderizado de todas las tareas dentro del arreglo de tareas en signals -->
+      <!--Imprime el estado de la lista en forma de json--> 
+      <pre>        
+        <code>
+          {{ tasks() | json }}
+        </code>
+      </pre>
       <section class="main">
         <ul class="todo-list">
           <li *ngFor="let task of tasks(); index as i">

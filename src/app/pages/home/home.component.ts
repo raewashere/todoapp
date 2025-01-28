@@ -51,4 +51,21 @@ export class HomeComponent {
     //Actualiza el estado de las tareas con una funcion arrow para no mostrar la tarea eliminada
     this.tasks.update((tasks) => tasks.filter((task, i) => i !== index));
   }
+
+  //Actualizar el estado de la tarea
+  updateTask(index: number){
+    //Actualizar el estado de la tarea
+    this.tasks.update((tasks) => {
+      return tasks.map((task, position) => {
+        if(position === index){
+          return {
+            ...task,
+            //Negar el estado de la tarea
+            completed: !task.completed
+          };
+        }
+        return task;
+      });
+    });
+  }
 }
