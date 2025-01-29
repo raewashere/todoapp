@@ -52,4 +52,24 @@
         {{i}} {{tarea}}
       </li>
     </ul>
+    <hr/>
+    <!--Uso de ngIf para renderizar o no algo -->
+    <div *ngIf="1 === 1">
+      <h1>Mostrar</h1>  
+    </div>
+    <div *ngIf="nameSignal() === 'Nicolas'">
+      <h1>Mostrar</h1>  
+    </div>
+    <div *ngIf="nameSignal() === 'Raymundo'">
+      <h1>{{nameSignal()}}</h1>  
+    </div>
+    <!--Ejemplo con objeto y un else, y muestra de bloque HTML de acuerdo a INPUT-->
+    <input type="number" [value]="personSignal().age" (change)="changeAgeSignal($event)" />
+    <div *ngIf="personSignal().name === 'Raymundo' && personSignal().age >= 25; else miBloque">
+      <p>Soy {{personSignal().name}} y tengo {{personSignal().age}}</p>  
+    </div>
+    <ng-template #miBloque>
+      <p>No cumples con los requisitos</p>
+    </ng-template>
+    
 </div>
