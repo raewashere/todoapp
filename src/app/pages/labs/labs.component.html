@@ -71,5 +71,12 @@
     <ng-template #miBloque>
       <p>No cumples con los requisitos</p>
     </ng-template>
+    <hr/>
+    <!--Uso de ngSwitch para renderizar o no algo -->
+    <div [ngSwitch]="personSignal().name">
+      <p *ngSwitchCase="'Raymundo'">Soy Raymundo</p>
+      <p *ngSwitchCase="'Nicolas'">Soy Nicolas</p>
+      <p *ngSwitchDefault>No soy nadie</p>
+    </div>
     
 </div>
