@@ -82,4 +82,16 @@ export class LabsComponent {
       };
     });
   }
+
+  changeNameSignal(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    console.log(newValue);
+    this.personSignal.update((prevState) => {
+      return {
+        ...prevState,
+        name: newValue,
+      };
+    });
+  }
 }

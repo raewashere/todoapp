@@ -73,6 +73,7 @@
     </ng-template>
     <hr/>
     <!--Uso de ngSwitch para renderizar o no algo -->
+    <input type="text" [value]="personSignal().name" (change)="changeNameSignal($event)" />
     <div [ngSwitch]="personSignal().name">
       <p *ngSwitchCase="'Raymundo'">Soy Raymundo</p>
       <p *ngSwitchCase="'Nicolas'">Soy Nicolas</p>
