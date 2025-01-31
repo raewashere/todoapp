@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-labs',
@@ -97,12 +97,12 @@ export class LabsComponent {
   }
 
   //Ejemplo de form control
-  colorCtrl = new FormControl('');
-
-  constructor (){
+  colorCtrl = new FormControl();
+  
+  constructor() {
     //Suscribirse a cambios de valor, para estar pendiente de los cambios
-    this.colorCtrl.valueChanges.subscribe((value) => {
+    this.colorCtrl.valueChanges.subscribe(value => {
       console.log(value);
-    });
+    })
   }
 }
