@@ -32,7 +32,7 @@ export class HomeComponent {
     //const newTask = input.value;
 
     if(this.newTaskCtrl.valid){
-      const value = this.newTaskCtrl.value;
+      const value = this.newTaskCtrl.value.trim();
       //Agregar nuevo elemento al arreglo sin mutar el arreglo original
       if(value !== ''){
         this.addTask(value);

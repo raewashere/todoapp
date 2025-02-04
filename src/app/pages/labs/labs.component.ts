@@ -105,4 +105,9 @@ export class LabsComponent {
       console.log(value);
     })
   }
+
+  //Form control colores
+  widhtCtrl = new FormControl(50,{
+    nonNullable: true,  //No permite valores nulos
+  });
 }
