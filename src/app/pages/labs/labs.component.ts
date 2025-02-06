@@ -110,4 +110,12 @@ export class LabsComponent {
   widhtCtrl = new FormControl(50,{
     nonNullable: true,  //No permite valores nulos
   });
+
+  //Form control colores
+  nameCtrl = new FormControl(50,{
+    nonNullable: true,  //No permite valores nulos
+    validators: [
+      Validators.required, //Requerido
+      Validators.minLength(3)], //Tamaño minimo de 3
+  });
 }

@@ -115,6 +115,16 @@
     </g>
   </svg>
   <hr />
+  <!-- Uso de FormControl para control de inputs y estilo-->
   <input type="number" [formControl]="widhtCtrl" />
   <span class="box" [style.width.px]="widhtCtrl.value"></span>
+  <hr />
+  <p>
+    <input type="text" [formControl]="nameCtrl" />
+    <br />
+    <span class="message-error" [class.show]="nameCtrl.invalid && nameCtrl.touched">Nombre invalido</span>
+  </p>
+  <p>
+    <input type="text"/>
+  </p>
 </div>

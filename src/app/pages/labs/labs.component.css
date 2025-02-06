@@ -7,3 +7,13 @@
     display: block;
     background-color: red;
 }
+
+.message-error{
+    background-color: red;
+    color: white;
+    padding: 1rem;
+}
+
+.message-error.show{
+   opacity: 1;
+}
