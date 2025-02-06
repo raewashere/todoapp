@@ -11,7 +11,8 @@
 .message-error{
     background-color: red;
     color: white;
-    padding: 1rem;
+    opacity: 0;
+    transition: all linear 0.5s;
 }
 
 .message-error.show{
