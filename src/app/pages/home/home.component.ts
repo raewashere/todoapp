@@ -27,9 +27,9 @@ export class HomeComponent {
   ]);
 
   //Filtrar las tareas
-  filter = signal<'all'| 'pending' |'completed'>('all');
+  filter = signal<'all' | 'pending' | 'completed'>('all');
 
-  taskByFilter = computed(() => {  
+  tasksByFilter = computed(() => {
     const filter = this.filter();
     const tasks = this.tasks();
     if (filter === 'pending') {
@@ -99,29 +99,27 @@ export class HomeComponent {
 
   //Funcion para editar una sola tarea
   updateTaskEditingMode(index: number) {
-    
     //Si la tarea ya esta completada, no se puede editar
-    if(this.tasks()[index].completed) return;
+    if (this.tasks()[index].completed) return;
 
-    this.tasks.update(prevState => {
+    this.tasks.update((prevState) => {
       return prevState.map((task, position) => {
         if (position === index) {
           return {
             ...task,
-            editing: true
-          }
+            editing: true,
+          };
         }
         return {
           ...task,
-          editing: false
+          editing: false,
         };
-      })
+      });
     });
   }
 
   //Actualización del texto de la tarea
   updateTaskText(index: number, event: Event) {
-    
     const input = event.target as HTMLInputElement;
     this.tasks.update((prevState) => {
       return prevState.map((task, position) => {
@@ -137,7 +135,7 @@ export class HomeComponent {
     });
   }
 
-  changeFilter(filter: 'all'| 'pending' |'completed') {
+  changeFilter(filter: 'all' | 'pending' | 'completed') {
     this.filter.set(filter);
   }
 }
