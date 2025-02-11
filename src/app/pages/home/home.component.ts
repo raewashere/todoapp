@@ -31,15 +31,15 @@ export class HomeComponent {
     //const input = event.target as HTMLInputElement;
     //const newTask = input.value;
 
-    if(this.newTaskCtrl.valid){
+    if (this.newTaskCtrl.valid) {
       const value = this.newTaskCtrl.value.trim();
       //Agregar nuevo elemento al arreglo sin mutar el arreglo original
-      if(value !== ''){
+      if (value !== '') {
         this.addTask(value);
         this.newTaskCtrl.setValue('');
       }
     }
-    
+
     //Limpiar el input
     //input.value = '';
   }
@@ -77,31 +77,38 @@ export class HomeComponent {
     });
   }
 
-  newTaskCtrl = new FormControl('', 
-    { nonNullable: true,
-      validators: [
-        Validators.required,
-      ]
-    });
+  newTaskCtrl = new FormControl('', {
+    nonNullable: true,
+    validators: [Validators.required],
+  });
 
+  //Funcion para editar una sola tarea
   updateTaskEditingMode(index: number) {
-    this.tasks.update((tasks) => {
-      return tasks.map((task, position) => {
+    
+    //Si la tarea ya esta completada, no se puede editar
+    if(this.tasks()[index].completed) return;
+
+    this.tasks.update(prevState => {
+      return prevState.map((task, position) => {
         if (position === index) {
           return {
             ...task,
-            editing: true,
-          };
+            editing: true
+          }
         }
-        return task;
-      });
+        return {
+          ...task,
+          editing: false
+        };
+      })
     });
   }
 
+  //Actualización del texto de la tarea
   updateTaskText(index: number, event: Event) {
-
+    
     const input = event.target as HTMLInputElement;
-    this.tasks.update(prevState => {
+    this.tasks.update((prevState) => {
       return prevState.map((task, position) => {
         if (position === index) {
           return {
