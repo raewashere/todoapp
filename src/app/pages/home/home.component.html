@@ -13,6 +13,7 @@
         />
       </div>
     </header>
+    <h1>{{filter()}}</h1>
     <div class="container todoapp-wrapper">
       <!-- Renderizado de todas las tareas dentro del arreglo de tareas en signals -->
       <!--Imprime el estado de la lista en forma de json 
@@ -75,13 +76,13 @@
         <!-- Remove this if you don't implement routing -->
         <ul class="filters">
           <li>
-            <a routerLink="/" class="selected">All</a>
+            <a (click)="changeFilter('all')" class="selected">All</a>
           </li>
           <li>
-            <a routerLink="/pending">Pending</a>
+            <a (click)="changeFilter('pending')" >Pending</a>
           </li>
           <li>
-            <a routerLink="/completed">Completed</a>
+            <a (click)="changeFilter('completed')" >Completed</a>
           </li>
         </ul>
         <!-- Hidden if no completed items are left ↓ -->
