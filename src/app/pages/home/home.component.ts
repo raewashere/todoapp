@@ -1,4 +1,5 @@
-import { Component, computed, signal } from '@angular/core';
+//computed, effect y signal elementos para la reactividad en angular
+import { Component, computed, effect, inject, Injector, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -13,18 +14,9 @@ import { Task } from '../../models/task.model';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  tasks = signal<Task[]>([
-    {
-      id: Date.now(),
-      title: 'Instalar Angular CLI',
-      completed: false,
-    },
-    {
-      id: Date.now(),
-      title: 'Crear componentes',
-      completed: false,
-    },
-  ]);
+
+  //Tareas vacias para el estado inicial
+  tasks = signal<Task[]>([]);
 
   //Filtrar las tareas
   filter = signal<'all' | 'pending' | 'completed'>('all');
@@ -96,6 +88,33 @@ export class HomeComponent {
     nonNullable: true,
     validators: [Validators.required],
   });
+
+  injector = inject(Injector);
+  
+  constructor(){
+    
+  }
+
+  ngOnInit(){
+    //Obtiene tareas de localStorage
+    const storage = localStorage.getItem('tasks');
+    //Valida si existe storage
+    if(storage){
+      const tasks = JSON.parse(storage);
+      this.tasks.set(tasks);
+    }
+  }
+
+  trakTasks(){
+    //Effect permite identificar cualquier cambio en la pagina
+    effect(() =>{
+      const tasks = this.tasks();
+      console.log(tasks);
+      //Guarda el objeto en localStorage
+      //Se ubica en aplicacion >> storage >> localStorage del inspector
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    } );
+  }
 
   //Funcion para editar una sola tarea
   updateTaskEditingMode(index: number) {
