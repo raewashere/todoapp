@@ -90,10 +90,6 @@ export class HomeComponent {
   });
 
   injector = inject(Injector);
-  
-  constructor(){
-    
-  }
 
   ngOnInit(){
     //Obtiene tareas de localStorage
@@ -103,6 +99,7 @@ export class HomeComponent {
       const tasks = JSON.parse(storage);
       this.tasks.set(tasks);
     }
+    this.trakTasks();
   }
 
   trakTasks(){
@@ -113,7 +110,7 @@ export class HomeComponent {
       //Guarda el objeto en localStorage
       //Se ubica en aplicacion >> storage >> localStorage del inspector
       localStorage.setItem('tasks', JSON.stringify(tasks));
-    } );
+    }, {injector : this.injector} );
   }
 
   //Funcion para editar una sola tarea
