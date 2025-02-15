@@ -1,21 +1,25 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports : [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = "Todoapp";
-  bienvenida = 'Bienvenido a la aplicación de tareas';
-  tareas = [
-    'Instalar en angular en CLI',
+  title = 'todo-app';
+  welcome = 'Bienvenido a mi primera aplicación con Angular';
+  tasks = [
+    'Instalar Angular CLI',
     'Crear proyecto',
-    'Crear componentes',
-  ]
-  
+    'Crear componente',
+    'Crear servicio',
+  ];
 }
+
+//Compilacion con ng build
+//Se modifica angular.json para evitar warnings o errores de compilacion de tamanio de archivo
+//pero no es recomendable
