@@ -1,6 +1,6 @@
 //computed, effect y signal elementos para la reactividad en angular
 import { Component, computed, effect, inject, Injector, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 //Importar el modelo de tarea
@@ -9,7 +9,7 @@ import { Task } from '../../models/task.model';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
