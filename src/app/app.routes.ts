@@ -11,7 +11,7 @@ export const routes: Routes = [
         component: LabsComponent
     }, 
     {   
-        path: 'home',
+        path: '',
         component: HomeComponent
     }
 ];
