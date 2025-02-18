@@ -102,16 +102,11 @@
   </div>
   <hr />
   <!-- Uso de FormControl para control de inputs -->
-  <input type="color" [formControl]="colorCtrl">
+  <input type="color" [formControl]="colorCtrl" />
   <p>color: {{ colorCtrl.value }}</p>
   <svg width="100" height="100">
     <g>
-      <rect
-        [attr.fill]="colorCtrl.value"
-        x="0"
-        y="0"
-        height="100"
-      ></rect>
+      <rect [attr.fill]="colorCtrl.value" x="0" y="0" height="100"></rect>
     </g>
   </svg>
   <hr />
@@ -122,9 +117,67 @@
   <p>
     <input type="text" [formControl]="nameCtrl" />
     <br />
-    <span class="message-error" [class.show]="nameCtrl.invalid && nameCtrl.touched">Nombre invalido</span>
+    <span
+      class="message-error"
+      [class.show]="nameCtrl.invalid && nameCtrl.touched"
+      >Nombre invalido</span
+    >
   </p>
   <p>
-    <input type="text"/>
+    <input type="text" />
   </p>
+  <hr/>
+  <!-- Nueva sintaxis de Angular -->
+  <!-- Ejemplo con @if -->
+  <h2> Nuevo if </h2>
+  @if(nameSignal() === 'Raymundo') {
+    <div>
+      Soy Raymundo
+    </div>
+   }
+   <!--Ejemplo con @if y else  -->
+   <h2> Nuevo if - else </h2>
+   @if(personSignal().name === 'Raymundo' && personSignal().age > 18) {
+    <div>
+      Soy Raymundo y tengo mas de 18 anios
+    </div>
+   }
+   @else
+   {
+    <div>
+      Soy Raymundo y tengo menos de 18 anios
+    </div>
+   }
+   <!-- Ejemplo con @for -->
+  <h2> Nuevo for </h2>
+  <ul>
+    @for(tarea of tareasSignal(); track tarea; let i = $index){
+      <li>
+        {{i}} - {{tarea}}
+      </li>
+    } @empty {
+      <li>
+        <strong>Esta vacio</strong>
+      </li>
+    }
+  </ul>
+  <!-- Ejemplo con @switch -->
+  <h2> Nuevo switch </h2>
+  <div>
+    @switch (personSignal().name) {
+      @case ('Raymundo') {
+        <p>Soy Raymundo switch</p>
+      }
+      @case ('Julian') {
+        <p>Soy Julian switch</p>
+      }
+      @case ('Ana') {
+        <p>Soy Ana switch</p>
+      }
+      @default {
+        <p>Soy nadie</p>
+      }
+    }
+  </div>
+
 </div>

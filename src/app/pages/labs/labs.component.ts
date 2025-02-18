@@ -27,7 +27,7 @@ export class LabsComponent {
 
   person = {
     name: 'Raymundo',
-    age: 26,
+    age: 17,
     img: 'https://www.google.com.mx/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
   };
 
